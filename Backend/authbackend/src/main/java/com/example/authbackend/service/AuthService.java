@@ -20,16 +20,14 @@ public class AuthService {
         if (userRepository.findByUsername(username).isPresent() || userRepository.findByEmail(email).isPresent()) {
             return "User already exists";
         }
+
         User user = new User();
         user.setUsername(username);
         user.setEmail(email);
         user.setPassword(passwordEncoder.encode(password));
+
         userRepository.save(user);
         return "User registered successfully";
     }
-
-    public boolean loginUser(String username, String password) {
-        Optional<User> user = userRepository.findByUsername(username);
-        return user.isPresent() && passwordEncoder.matches(password, user.get().getPassword());
-    }
 }
+
