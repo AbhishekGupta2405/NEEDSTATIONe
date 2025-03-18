@@ -22,6 +22,12 @@ import PaymentGateway from "./pages/PaymentGateway/PaymentGateway.jsx";
 import AvailableHelpers from "./pages/BasicNeeds/AvailableHelpers.jsx";
 import HelperRegistration from "./pages/HelperRegistration/HelperRegistration.jsx";
 import FlatRentalHome from "./pages/FlatandMaidService/FlatRentalHome.jsx";
+import HelperLayout from "./components/layouts/HelperLayout.jsx";
+import OverviewPage from "./pages/HelperPages/OverviewPage.jsx";
+import UpcomingTaskPage from "./pages/HelperPages/UpcomingTasksPage";
+import CompletedTaskPage from "./pages/HelperPages/CompletedTaskPage";
+import SettingsPage from "./pages/HelperPages/SettingsPage";
+import EarningPage from "./pages/HelperPages/EarningAndPaymentPage";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +56,18 @@ const router = createBrowserRouter([
   },
   { path: "/payment-gateway", element: <PaymentGateway /> },
   { path: "/available-helpers", element: <AvailableHelpers /> },
+  {
+    path: "/helper",
+    element: <HelperLayout />,
+    children: [
+      { path: "overview", element: <OverviewPage /> },
+      { path: "upcoming-tasks", element: <UpcomingTaskPage /> },
+      { path: "completed-task", element: <CompletedTaskPage /> },
+      { path: "earnings", element: <EarningPage /> },
+      { path: "settings", element: <SettingsPage /> },
+    ],
+  },
+  
 ]);
 
 createRoot(document.getElementById("root")).render(
