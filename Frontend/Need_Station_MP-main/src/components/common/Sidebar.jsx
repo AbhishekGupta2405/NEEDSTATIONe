@@ -1,9 +1,10 @@
-import { BarChart2, DollarSign, Menu, Settings, CheckCircle, Clock } from "lucide-react";
+import { BarChart2, DollarSign, Menu, Settings, CheckCircle, Clock, House } from "lucide-react";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 const SIDEBAR_ITEMS = [
+	{ name: "Home", icon: House, color: "#6EE7B7", href: "/" },
 	{
 		name: "Overview",
 		icon: BarChart2,
