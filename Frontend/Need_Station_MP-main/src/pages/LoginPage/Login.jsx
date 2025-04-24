@@ -17,15 +17,15 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch("http://localhost:8080/auth/login", {
+      const response = await fetch("http://localhost:8080/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
       const data = await response.json();
-      if (data.statusCode === 200) {
+      if (response.ok) {
         setMessage(data.message);
-        login(data.userDto.username); 
+        login(data.username);
         navigate("/");
       } else {
         setMessage(data.message || "Login failed.");

@@ -15,13 +15,13 @@ const Signup = () => {
 
   const handleSignup = async () => {
     try {
-      const response = await fetch('http://localhost:8080/auth/signup', {
+      const response = await fetch('http://localhost:8080/api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
       const data = await response.json();
-      if (data.statusCode === 200) {
+      if (response.ok) {
         setMessage(data.message);
         navigate('/login');
       } else {
